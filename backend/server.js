@@ -2,6 +2,7 @@ import express from "express";
 import {} from "dotenv/config";
 import router from "./routes/workouts.js";
 import mongoose from "mongoose";
+import bodyParser from "body-parser";
 
 const WorkoutRoutes = router;
 
@@ -13,6 +14,9 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+
+//
+app.use(bodyParser.json());
 
 //routes
 app.use("/api/workouts", WorkoutRoutes);

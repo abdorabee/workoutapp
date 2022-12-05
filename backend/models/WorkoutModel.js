@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const Schema = mongoose.Schema;
+const schema = mongoose.Schema;
 
-const workoutSchema = new Schema(
+const workoutSchema = new schema(
   {
     title: {
       type: String,
