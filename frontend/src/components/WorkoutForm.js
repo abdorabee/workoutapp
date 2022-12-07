@@ -6,18 +6,19 @@ const WorkoutForm = () => {
   const [reps, setreps] = useState("");
   const [error, setError] = useState(null);
 
-  const handleSumbit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const workout = { title, load, reps };
 
-    const response = await fetch("/api/workout", {
+    const response = await fetch("/api/workouts", {
       method: "POST",
       body: JSON.stringify(workout),
-      header: {
+      headers: {
         "Content-Type": "application/json",
       },
     });
+
     const json = await response.json();
 
     if (!response.ok) {
@@ -33,7 +34,7 @@ const WorkoutForm = () => {
   };
 
   return (
-    <form className="create" onSubmit={handleSumbit}>
+    <form className="create" onSubmit={handleSubmit}>
       <h3>Add a New Workout</h3>
 
       <label>Excersize Title:</label>
